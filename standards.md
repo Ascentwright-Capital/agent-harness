@@ -34,7 +34,7 @@ Breaking one is a bug, even if every check passes.
 
 ## Rules for AI agents
 
-- Read the repository's `AGENTS.md`, then this folder, before your first change.
+- Read the repository's `AGENTS.md`, then `.agents/shared/`, before your first change. If it is empty, run `git submodule update --init`.
 - Stay inside the issue's scope. File other problems you find as new Linear issues.
 - Work test first where the repository has tests: show the test that failed before and passes after.
 - Run every check the repository's `AGENTS.md` lists before you open a pull request.

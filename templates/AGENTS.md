@@ -2,6 +2,8 @@
 
 <One paragraph: what this repository is, who uses it, where it runs.>
 
+If `.agents/shared` is empty, run `git submodule update --init` first.
+
 Read [`.agents/shared/standards.md`](.agents/shared/standards.md) before your first change. It holds
 the rules every Ascentwright repository shares. This file and `.agents/` add the rules for this
 repository only.

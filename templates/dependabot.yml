@@ -1,0 +1,10 @@
+# Copy to .github/dependabot.yml. Opens a pull request when agent-harness moves.
+version: 2
+updates:
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: "[Chore]"
+    labels: [agent-harness]

@@ -1,4 +1,0 @@
-Ascentwright-Capital/nusa-auto
-Ascentwright-Capital/website
-Ascentwright-Capital/OpenBot
-Ascentwright-Capital/OpenTag

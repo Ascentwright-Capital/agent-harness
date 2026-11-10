@@ -1,8 +1,10 @@
 # agent-harness
 
-This repository is the source of the shared agent harness. Read [README.md](README.md) first.
+If you are reading this inside another repository's `.agents/shared`, do not edit these files there:
+change them in Ascentwright-Capital/agent-harness. Start from [README.md](README.md).
 
-- Edit `shared/` here; never edit a synced copy in a product repository.
-- A rule belongs in `shared/` only when every repository needs it.
-- Before a pull request, check that `scripts/sync.sh` still works: `scripts/sync.sh "$(mktemp -d)"`.
-- Conventions are in [`shared/standards.md`](shared/standards.md).
+When working in agent-harness itself:
+
+- A rule belongs here only when every repository needs it.
+- Keep every link relative, so it works both here and when mounted at `.agents/shared`.
+- Follow [standards.md](standards.md).
