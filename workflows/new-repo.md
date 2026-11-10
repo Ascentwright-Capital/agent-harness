@@ -1,0 +1,18 @@
+# New repository
+
+Ken creates repositories in the org. Then, in the first pull request:
+
+1. Mount the harness:
+   `git submodule add https://github.com/Ascentwright-Capital/agent-harness .agents/shared`
+2. Copy [`../templates/AGENTS.md`](../templates/AGENTS.md) to the root and fill it in. Add a
+   `CLAUDE.md` containing the single line `@AGENTS.md`.
+3. Copy [`../templates/dependabot.yml`](../templates/dependabot.yml) to `.github/dependabot.yml`,
+   so harness changes arrive as pull requests.
+4. Copy [`../templates/claude-settings.json`](../templates/claude-settings.json) to
+   `.claude/settings.json` (or merge its `hooks` into the existing file), so every Claude Code
+   session fetches the submodule.
+5. Add CI from the org's workflow templates (Actions → New workflow → Ascentwright Node CI). It
+   checks out submodules and runs the harness check. List the same checks in `AGENTS.md`.
+6. Add a README that says what the repository is and how to run it.
+7. After the merge, Ken turns on: squash merge only, delete branches after merge, and (where the plan
+   allows) a rule on `main` that requires a pull request and passing CI.
