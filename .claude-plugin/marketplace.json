@@ -1,0 +1,185 @@
+{
+  "name": "ascentwright",
+  "description": "The skill stack every Ascentwright-Capital repository shares. Each plugin is a third-party skill set pinned to a reviewed commit.",
+  "owner": {
+    "name": "Ascentwright Capital",
+    "url": "https://github.com/Ascentwright-Capital"
+  },
+  "plugins": [
+    {
+      "name": "pstack",
+      "description": "Core. Lauren Tan's pstack, Claude Code port: plan, verify, review and principle skills.",
+      "category": "engineering",
+      "homepage": "https://github.com/michael-denyer/pstack-claude",
+      "license": "MIT",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/michael-denyer/pstack-claude.git",
+        "path": "plugins/pstack",
+        "sha": "42fcb61ee10c92543d76f87fb29c3be09e6c63aa"
+      }
+    },
+    {
+      "name": "mattpocock-skills",
+      "description": "Core. Matt Pocock's engineering skills: grilling, spec and ticket flows, TDD, diagnosis, code review.",
+      "category": "engineering",
+      "homepage": "https://github.com/mattpocock/skills",
+      "license": "MIT",
+      "source": {
+        "source": "github",
+        "repo": "mattpocock/skills",
+        "sha": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+      }
+    },
+    {
+      "name": "emilkowalski-skills",
+      "description": "Core. Emil Kowalski's design engineering skills: animation, gestures, UI polish and review.",
+      "category": "design",
+      "homepage": "https://github.com/emilkowalski/skills",
+      "license": "MIT",
+      "source": {
+        "source": "github",
+        "repo": "emilkowalski/skills",
+        "sha": "715c1807e08c497cfd1dc4feb450a2a3300ef2a9"
+      }
+    },
+    {
+      "name": "superpowers",
+      "description": "Opt-in. Jesse Vincent's workflow skills: brainstorming, plans, systematic debugging, verification. Runs a hook at session start.",
+      "category": "engineering",
+      "homepage": "https://github.com/obra/superpowers",
+      "license": "MIT",
+      "defaultEnabled": false,
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers",
+        "sha": "22f0b463e7a5e579904dd6211a520321035526f7"
+      }
+    },
+    {
+      "name": "impeccable",
+      "description": "Opt-in. Paul Bakaus's frontend design skill: polish, audit and critique commands with anti-pattern checks.",
+      "category": "design",
+      "homepage": "https://impeccable.style",
+      "license": "Apache-2.0",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pbakaus/impeccable.git",
+        "path": "plugin",
+        "sha": "ec229b48547f24685ffb22aa51c462c5ae27908c"
+      }
+    },
+    {
+      "name": "frontend-design",
+      "description": "Opt-in. Anthropic: distinctive, production-grade frontend interfaces.",
+      "category": "design",
+      "homepage": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/skills.git",
+        "path": "skills/frontend-design",
+        "sha": "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+      }
+    },
+    {
+      "name": "webapp-testing",
+      "description": "Opt-in. Anthropic: test a local web app with Playwright.",
+      "category": "engineering",
+      "homepage": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/skills.git",
+        "path": "skills/webapp-testing",
+        "sha": "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+      }
+    },
+    {
+      "name": "skill-creator",
+      "description": "Opt-in. Anthropic: write, test and improve skills. Use it when adding a skill to this harness.",
+      "category": "engineering",
+      "homepage": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/skills.git",
+        "path": "skills/skill-creator",
+        "sha": "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+      }
+    },
+    {
+      "name": "web-design-guidelines",
+      "description": "Opt-in. Vercel: review UI code against web interface guidelines.",
+      "category": "design",
+      "homepage": "https://github.com/vercel-labs/agent-skills",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/vercel-labs/agent-skills.git",
+        "path": "skills/web-design-guidelines",
+        "sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
+      }
+    },
+    {
+      "name": "react-best-practices",
+      "description": "Opt-in. Vercel: React and Next.js performance rules.",
+      "category": "engineering",
+      "homepage": "https://github.com/vercel-labs/agent-skills",
+      "license": "MIT",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/vercel-labs/agent-skills.git",
+        "path": "skills/react-best-practices",
+        "sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
+      }
+    },
+    {
+      "name": "differential-review",
+      "description": "Opt-in. Trail of Bits: security-focused review of a code change.",
+      "category": "security",
+      "homepage": "https://github.com/trailofbits/skills",
+      "license": "CC-BY-SA-4.0",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/trailofbits/skills.git",
+        "path": "plugins/differential-review",
+        "sha": "e4dd0bb5b15535f7c5a0834187dffba6ac37e4ff"
+      }
+    },
+    {
+      "name": "insecure-defaults",
+      "description": "Opt-in. Trail of Bits: finds hardcoded credentials, fail-open settings and other insecure defaults.",
+      "category": "security",
+      "homepage": "https://github.com/trailofbits/skills",
+      "license": "CC-BY-SA-4.0",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/trailofbits/skills.git",
+        "path": "plugins/insecure-defaults",
+        "sha": "e4dd0bb5b15535f7c5a0834187dffba6ac37e4ff"
+      }
+    },
+    {
+      "name": "supply-chain-risk-auditor",
+      "description": "Opt-in. Trail of Bits: audits npm, PyPI and Go dependencies for supply-chain risk.",
+      "category": "security",
+      "homepage": "https://github.com/trailofbits/skills",
+      "license": "CC-BY-SA-4.0",
+      "defaultEnabled": false,
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/trailofbits/skills.git",
+        "path": "plugins/supply-chain-risk-auditor",
+        "sha": "e4dd0bb5b15535f7c5a0834187dffba6ac37e4ff"
+      }
+    }
+  ]
+}

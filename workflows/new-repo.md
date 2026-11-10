@@ -9,8 +9,9 @@ Ken creates repositories in the org. Then, in the first pull request:
 3. Copy [`../templates/dependabot.yml`](../templates/dependabot.yml) to `.github/dependabot.yml`,
    so harness changes arrive as pull requests.
 4. Copy [`../templates/claude-settings.json`](../templates/claude-settings.json) to
-   `.claude/settings.json` (or merge its `hooks` into the existing file), so every Claude Code
-   session fetches the submodule.
+   `.claude/settings.json` (or merge its keys into the existing file), so every Claude Code
+   session fetches the submodule and the repository turns on the core [skill stack](../skills.md).
+   Run `sh .agents/shared/scripts/install-skills.sh` to install it.
 5. Add CI from the org's workflow templates (Actions → New workflow → Ascentwright Node CI). It
    checks out submodules and runs the harness check. List the same checks in `AGENTS.md`.
 6. Add a README that says what the repository is and how to run it.
