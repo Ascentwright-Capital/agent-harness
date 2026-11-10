@@ -8,6 +8,9 @@ Read [`.agents/shared/standards.md`](.agents/shared/standards.md) before your fi
 the rules every Ascentwright repository shares. This file and `.agents/` add the rules for this
 repository only.
 
+Skills come from the shared stack in [`.agents/shared/skills.md`](.agents/shared/skills.md). Install them
+once per clone with `sh .agents/shared/scripts/install-skills.sh`.
+
 ## Run it
 
 ```sh

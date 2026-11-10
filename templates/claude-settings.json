@@ -10,5 +10,18 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "pstack@ascentwright": true,
+    "mattpocock-skills@ascentwright": true,
+    "emilkowalski-skills@ascentwright": true
+  },
+  "extraKnownMarketplaces": {
+    "ascentwright": {
+      "source": {
+        "source": "directory",
+        "path": "./.agents/shared"
+      }
+    }
   }
 }
