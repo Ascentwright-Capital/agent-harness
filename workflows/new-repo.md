@@ -12,8 +12,11 @@ Ken creates repositories in the org. Then, in the first pull request:
    `.claude/settings.json` (or merge its keys into the existing file), so every Claude Code
    session fetches the submodule and the repository turns on the core [skill stack](../skills.md).
    Run `sh .agents/shared/scripts/install-skills.sh` to install it.
-5. Add CI from the org's workflow templates (Actions → New workflow → Ascentwright Node CI). It
+5. Copy [`../templates/claude-hooks/block-ai-credit.sh`](../templates/claude-hooks/block-ai-credit.sh)
+   to `.claude/hooks/block-ai-credit.sh`. The settings from step 4 run it before every shell and
+   GitHub call, and it refuses a commit or pull request that credits an AI.
+6. Add CI from the org's workflow templates (Actions → New workflow → Ascentwright Node CI). It
    checks out submodules and runs the harness check. List the same checks in `AGENTS.md`.
-6. Add a README that says what the repository is and how to run it.
-7. After the merge, Ken turns on: squash merge only, delete branches after merge, and (where the plan
+7. Add a README that says what the repository is and how to run it.
+8. After the merge, Ken turns on: squash merge only, delete branches after merge, and (where the plan
    allows) a rule on `main` that requires a pull request and passing CI.

@@ -26,7 +26,10 @@ Breaking one is a bug, even if every check passes.
   `<type>` is `feat`, `fix`, `refactor`, `docs`, `chore`, `style` or `test`.
 - Commit and pull request titles start with `[Feat]`, `[Fix]`, `[Refactor]`, `[Docs]`, `[Chore]`,
   `[Style]` or `[Test]` and end with the issue ID, for example `[Feat] Add booking form (AP-12)`.
-- Ken is the sole author. Do not add AI co-author or credit lines to commits or pull requests.
+- Ken is the sole author. Never credit an AI in a commit, pull request, issue or comment: no
+  `Co-Authored-By` an AI tool, no "Generated with", no `Claude-Session` line or Claude link, and no
+  "Requested by" line. Commit as the person you work for, never as an AI. In Claude Code a hook refuses them
+  ([`templates/claude-hooks/block-ai-credit.sh`](templates/claude-hooks/block-ai-credit.sh)).
 - Fill in the pull request template: what changed, why, how it was tested with every required check
   and its result, and each new dependency with its reason.
 - Keep a pull request reviewable in one sitting, about 400 changed lines or fewer without tests and
