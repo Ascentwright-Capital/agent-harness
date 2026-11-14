@@ -17,6 +17,7 @@ Ken creates repositories in the org. Then, in the first pull request:
    GitHub call, and it refuses a commit or pull request that credits an AI.
 6. Add CI from the org's workflow templates (Actions → New workflow → Ascentwright Node CI). It
    checks out submodules and runs the harness check. List the same checks in `AGENTS.md`.
+   Add "Ascentwright AI credit check" from the same list: it fails a pull request that credits an AI.
 7. Add a README that says what the repository is and how to run it.
 8. After the merge, Ken turns on: squash merge only, delete branches after merge, and (where the plan
    allows) a rule on `main` that requires a pull request and passing CI.
