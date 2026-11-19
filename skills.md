@@ -52,7 +52,12 @@ Skills appear in the next Claude Code session as `/<plugin>:<skill>`.
 A Claude Code cloud session does not load plugins that a repository's settings turn on. To give
 cloud sessions the stack, an owner of the Claude organization adds the same `extraKnownMarketplaces`
 and `enabledPlugins` keys to the organization's managed settings, with the marketplace source
-`{ "source": "github", "repo": "Ascentwright-Capital/agent-harness" }`.
+`{ "source": "github", "repo": "Ascentwright-Capital/agent-harness", "ref": "<full commit id>" }`.
+
+Set `ref` to the full 40-character id of a reviewed commit on `main`, never a branch name. Without
+`ref`, every cloud session follows whatever is on `main` at that moment and skips the review each
+repository gives a submodule bump. Move `ref` forward the same way: read the harness diff, then
+update the managed settings.
 
 ## Change the stack
 
