@@ -42,12 +42,20 @@ fi
 
 # Before a push or a new pull request, check the commits that are not on any remote yet. This
 # catches a message that came from a file or an editor, and a commit authored as an AI.
-if has 'git[[:space:]]([^;&|]*[[:space:]])?push|gh[[:space:]]+pr[[:space:]]+create|"tool_name"[[:space:]]*:[[:space:]]*"mcp__github__create_pull_request"'; then
-  if git rev-parse --git-dir >/dev/null 2>&1; then
-    bad=$(git log HEAD --not --remotes --format='%h author %an <%ae>, committer %cn <%ce>%n%s%n%b' 2>/dev/null |
+# Only a push in the command itself counts, not the words "git push" anywhere else in the payload.
+command="\"command\"[[:space:]]*:[[:space:]]*\"$inside"
+# git runs in this directory, which may be a repository you have not reviewed: switch off the
+# repository settings that can start another program (fsmonitor, signature checks).
+safe_git() { git -c core.fsmonitor=false -c log.showSignature=false "$@"; }
+if has "$command(git[[:space:]]([^;&|]*[[:space:]])?push|gh[[:space:]]+pr[[:space:]]+create)" ||
+  has '"tool_name"[[:space:]]*:[[:space:]]*"mcp__github__create_pull_request"'; then
+  if safe_git rev-parse --git-dir >/dev/null 2>&1; then
+    bad=$(safe_git log --no-show-signature HEAD --not --remotes --format='%h author %an <%ae>, committer %cn <%ce>%n%s%n%b' 2>/dev/null |
       grep -Ei -e "$credit" -e "^$lead" -e "^[0-9a-f]+ author .*($ai)$end" | head -5)
     if [ -n "$bad" ]; then
-      echo "$bad" >&2
+      # Commit text is quoted as data: printf, not echo, so backslashes are not decoded, and
+      # control characters are dropped.
+      printf '%s\n' "$bad" | tr -d '\000-\010\013-\037\177' | sed 's/^/  commit text: /' >&2
       echo "If the author or committer is an AI, set git user.name and user.email to the person you work for and re-author the commit: GitHub turns other authors into Co-authored-by lines on a squash merge." >&2
       refuse "an unpushed commit"
     fi
