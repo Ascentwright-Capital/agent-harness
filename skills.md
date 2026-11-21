@@ -47,12 +47,27 @@ sh .agents/shared/scripts/install-skills.sh
 ```
 
 It registers `.agents/shared` as the marketplace and installs every plugin the repository enables.
-Skills appear in the next Claude Code session as `/<plugin>:<skill>`.
+Skills appear in the next Claude Code session as `/<plugin>:<skill>`. In agent-harness itself, run
+`sh scripts/install-skills.sh`: the marketplace is the repository root.
 
-A Claude Code cloud session does not load plugins that a repository's settings turn on. To give
-cloud sessions the stack, an owner of the Claude organization adds the same `extraKnownMarketplaces`
-and `enabledPlugins` keys to the organization's managed settings, with the marketplace source
-`{ "source": "github", "repo": "Ascentwright-Capital/agent-harness", "ref": "<full commit id>" }`.
+A Claude Code cloud session does not load plugins that a repository's settings turn on. Two ways to
+give cloud sessions the stack:
+
+- **The cloud environment's setup script.** It runs before Claude starts, so a plugin it installs is
+  loaded. For an environment whose sessions include agent-harness:
+
+  ```sh
+  if [ -f agent-harness/.claude-plugin/marketplace.json ] && command -v claude >/dev/null; then
+    claude plugin marketplace add ./agent-harness || claude plugin marketplace update ascentwright || true
+    claude plugin install pstack@ascentwright --scope user || true
+  fi
+  ```
+
+  It reads the marketplace from the session's checkout of agent-harness, so each plugin stays at the
+  `sha` pinned here.
+- **The organization's managed settings.** An owner of the Claude organization adds the same
+  `extraKnownMarketplaces` and `enabledPlugins` keys, with the marketplace source
+  `{ "source": "github", "repo": "Ascentwright-Capital/agent-harness", "ref": "<full commit id>" }`.
 
 Set `ref` to the full 40-character id of a reviewed commit on `main`, never a branch name. Without
 `ref`, every cloud session follows whatever is on `main` at that moment and skips the review each

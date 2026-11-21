@@ -34,6 +34,17 @@ Breaking one is a bug, even if every check passes.
   that brings in upstream commits takes the label `upstream-sync`, which skips the commit check.
 - Fill in the pull request template: what changed, why, how it was tested with every required check
   and its result, and each new dependency with its reason.
+- **Show it working.** A pull request is ready for review only when its "Verification" section shows
+  the change working, captured from the built app or the pull request's preview, never a mockup:
+  - Something people see (a page, a screen, a message, an email, a document): a screenshot of each
+    changed screen in every language and size it ships in, and a demo video of each changed flow
+    from its start to its result.
+  - Nothing to see (CI, configuration, a library, a backend rule): `No visible surface:` with the
+    reason, then the commands you ran and their output.
+
+  Look at the evidence yourself before you post it: it is there to find problems, not to decorate
+  the pull request. How: [`workflows/verify.md`](workflows/verify.md). The "PR evidence" check fails
+  a pull request without it.
 - Keep a pull request reviewable in one sitting, about 400 changed lines or fewer without tests and
   generated files. Squash merge.
 
@@ -44,6 +55,8 @@ Breaking one is a bug, even if every check passes.
 - Stay inside the issue's scope. File other problems you find as new Linear issues.
 - Work test first where the repository has tests: show the test that failed before and passes after.
 - Run every check the repository's `AGENTS.md` lists before you open a pull request.
+- Run your change and look at it before you open a pull request, then put the proof in it ("Show it
+  working" above). Passing tests are not proof that a screen looks right.
 - Ask Ken before you touch a database schema, payments, authentication, personal data, production
   infrastructure, or DNS.
 - When something cost you time, add it to the repository's pitfalls with its fix. When a rule can

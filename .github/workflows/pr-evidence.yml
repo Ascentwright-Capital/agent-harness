@@ -1,0 +1,16 @@
+# Fails a pull request whose description does not show the change working.
+# The check itself lives in Ascentwright-Capital/.github. This repository has no visible surface.
+name: PR evidence
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+permissions: {}
+concurrency:
+  group: pr-evidence-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  check:
+    permissions:
+      contents: read
+      pull-requests: read
+    uses: Ascentwright-Capital/.github/.github/workflows/pr-evidence-check.yml@main
