@@ -27,8 +27,9 @@ printf '%s' "$repo" | grep -Eq '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$' || die "canno
 # Paths relative to the evidence directory, in name order.
 files=$(cd "$src" && find . -type f | sed 's#^\./##' | grep -Ei '\.(png|jpe?g|webp|gif|mp4|webm|mov)$' | LC_ALL=C sort) || true
 [ -n "$files" ] || die "no screenshots or videos in $src"
-# The commit titles carry the issue, read from a <type>/ap-<number>-<slug> branch.
-issue=$(printf '%s' "$branch" | sed -nE 's#^[a-z]+/ap-([0-9]+)-.*#AP-\1#p')
+# The commit titles carry the issue: PR_EVIDENCE_ISSUE (AP-12), else read from a
+# <type>/ap-<number>-<slug> branch.
+issue=${PR_EVIDENCE_ISSUE:-$(printf '%s' "$branch" | sed -nE 's#^[a-z]+/ap-([0-9]+)-.*#AP-\1#p')}
 
 max=$((25 * 1024 * 1024))
 dest=.pr-evidence/$(date -u +%Y%m%d-%H%M%S)
