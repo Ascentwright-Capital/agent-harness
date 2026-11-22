@@ -28,6 +28,7 @@
   },
   "enabledPlugins": {
     "pstack@ascentwright": true,
+    "ascentwright@ascentwright": true,
     "mattpocock-skills@ascentwright": true,
     "emilkowalski-skills@ascentwright": true
   },

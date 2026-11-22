@@ -10,6 +10,7 @@ for AI agents. Each repository mounts this repository as a git submodule at `.ag
 | [`workflows/verify.md`](workflows/verify.md) | You capture screenshots and a demo video, and put them in a pull request. |
 | [`workflows/new-repo.md`](workflows/new-repo.md) | You set up a new repository, or add the harness to one. |
 | [`skills.md`](skills.md) | You want to know which skills a repository loads, or change them. |
+| [`plugins/ascentwright/`](plugins/ascentwright/) | You add or change a skill we wrote ourselves, such as `be-ambitious`. |
 | [`scripts/`](scripts/) | You install the skill stack (`install-skills.sh`), or capture and publish pull request evidence (`pr-evidence/`). |
 | [`templates/`](templates/) | You add the harness to a repository: `AGENTS.md`, Dependabot, Claude Code settings and the hook that blocks AI credit. |
 

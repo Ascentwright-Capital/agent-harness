@@ -20,6 +20,13 @@
       }
     },
     {
+      "name": "ascentwright",
+      "description": "Core. Ascentwright's own skills: be-ambitious, which makes a task deeper rather than bigger and rewrites its prompt.",
+      "category": "engineering",
+      "homepage": "https://github.com/Ascentwright-Capital/agent-harness",
+      "source": "./plugins/ascentwright"
+    },
+    {
       "name": "mattpocock-skills",
       "description": "Core. Matt Pocock's engineering skills: grilling, spec and ticket flows, TDD, diagnosis, code review.",
       "category": "engineering",

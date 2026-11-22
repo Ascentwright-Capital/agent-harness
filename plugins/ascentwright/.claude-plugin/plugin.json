@@ -1,0 +1,11 @@
+{
+  "name": "ascentwright",
+  "description": "Ascentwright's own skills, written here rather than pinned from upstream.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Ascentwright Capital",
+    "url": "https://github.com/Ascentwright-Capital"
+  },
+  "homepage": "https://github.com/Ascentwright-Capital/agent-harness",
+  "repository": "https://github.com/Ascentwright-Capital/agent-harness"
+}
