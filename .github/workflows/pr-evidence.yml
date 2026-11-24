@@ -12,5 +12,5 @@ jobs:
   check:
     permissions:
       contents: read
-      pull-requests: read
+      pull-requests: write # the comment that shows the evidence
     uses: Ascentwright-Capital/.github/.github/workflows/pr-evidence-check.yml@main

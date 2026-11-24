@@ -38,13 +38,15 @@ alters what people see. Each step ends on its completion criterion.
    git push
    ```
 
-   It adds the files in one commit and takes them out in the next, so they never reach `main`, and
-   prints the Markdown that shows them. A person working in the browser can drag the files into the
-   description instead. Done when the push succeeded.
-5. **Write the Verification section.** Paste the Markdown under `## Verification` in the pull
-   request description, and add a line for each screen or flow saying what it shows and what you
-   checked. For a change with nothing to see, write `No visible surface:` with the reason, then the
-   commands and their output in a code block. Done when the "PR evidence" check passes.
+   It adds the files in one commit and takes them out in the next, so they never reach `main`. The
+   "PR evidence" check finds that commit, counts its files as the screenshots and video, and shows
+   them in a comment on the pull request. Don't paste images into the description yourself: an
+   agent's GitHub tool strips them. A person working in the browser can drag files into the
+   description instead. Done when the push succeeded and the comment shows every file.
+5. **Write the Verification section.** Under `## Verification` in the description, say what each
+   screen and video shows and what you checked. For a change with nothing to see, write
+   `No visible surface:` with the reason, then the commands and their output in a code block. Done
+   when the "PR evidence" check passes.
 
 The "PR evidence" check (in Ascentwright-Capital/.github) fails a pull request without a
 Verification section, without a screenshot and a video, or that claims "No visible surface" while it
