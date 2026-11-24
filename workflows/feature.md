@@ -14,5 +14,8 @@ do not start the next step before it holds. A repository can extend a step in it
 4. **Test first, then build.** Done when every "Done when" item has a passing test.
 5. **Review your own diff twice.** First for duplication and dead code, then for wrong results,
    missing checks, money, time and auth. Done when the second pass finds nothing new.
-6. **Pull request.** Run every check `AGENTS.md` lists, fill in the template, and link the issue.
-   Done when CI passes.
+6. **Verify.** Run the change the way it ships, capture screenshots and a demo video, look at them,
+   and publish them to the branch, as in [`verify.md`](verify.md). Done when the evidence shows every
+   "Done when" item working.
+7. **Pull request.** Run every check `AGENTS.md` lists, fill in the template with the evidence under
+   "Verification", and link the issue. Done when CI passes, the "PR evidence" check included.

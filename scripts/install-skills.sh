@@ -5,6 +5,8 @@ set -eu
 
 harness=.agents/shared
 settings=.claude/settings.json
+# In agent-harness itself, the marketplace is the repository root.
+[ -f .claude-plugin/marketplace.json ] && harness=.
 
 command -v claude >/dev/null || { echo "install-skills: the claude CLI is not on PATH" >&2; exit 1; }
 [ -f "$harness/.claude-plugin/marketplace.json" ] || { echo "install-skills: $harness is empty; run git submodule update --init" >&2; exit 1; }

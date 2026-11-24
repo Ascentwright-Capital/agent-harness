@@ -3,7 +3,8 @@
 The skills every Ascentwright repository can load in Claude Code. This repository is a Claude Code
 plugin marketplace named `ascentwright`: [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json)
 lists each skill set as a plugin and pins it to one reviewed commit of its upstream repository.
-Nothing is copied here.
+Nothing from upstream is copied here. Skills we write ourselves live in
+[`plugins/ascentwright/`](plugins/ascentwright/), the `ascentwright` plugin.
 
 [standards.md](standards.md) and the repository's `AGENTS.md` win over any skill. Where a skill says
 to proceed without asking, the "Ask Ken" rule still applies. Where a skill opens, merges or
@@ -16,6 +17,7 @@ The settings template turns these on in every repository.
 | Plugin | From | Use it for |
 |---|---|---|
 | `pstack` | Lauren Tan's pstack, [Claude Code port](https://github.com/michael-denyer/pstack-claude) | Planning and review: `/pstack:architect`, `/pstack:how`, `/pstack:why`, `/pstack:interrogate`, `/pstack:tdd`, `/pstack:unslop`. |
+| `ascentwright` | This repository, [`plugins/ascentwright/`](plugins/ascentwright/) | `/ascentwright:be-ambitious`: make a task deeper, not bigger, and rewrite its prompt. |
 | `mattpocock-skills` | [mattpocock/skills](https://github.com/mattpocock/skills) | Issue to code: `/mattpocock-skills:grill-me`, `to-spec`, `to-tickets`, `tdd`, `diagnosing-bugs`, `code-review`. |
 | `emilkowalski-skills` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Interface work: `/emilkowalski-skills:emil-design-eng`, `animate`, `review-animations`, `break-ui`. |
 
@@ -47,12 +49,28 @@ sh .agents/shared/scripts/install-skills.sh
 ```
 
 It registers `.agents/shared` as the marketplace and installs every plugin the repository enables.
-Skills appear in the next Claude Code session as `/<plugin>:<skill>`.
+Skills appear in the next Claude Code session as `/<plugin>:<skill>`. In agent-harness itself, run
+`sh scripts/install-skills.sh`: the marketplace is the repository root.
 
-A Claude Code cloud session does not load plugins that a repository's settings turn on. To give
-cloud sessions the stack, an owner of the Claude organization adds the same `extraKnownMarketplaces`
-and `enabledPlugins` keys to the organization's managed settings, with the marketplace source
-`{ "source": "github", "repo": "Ascentwright-Capital/agent-harness", "ref": "<full commit id>" }`.
+A Claude Code cloud session does not load plugins that a repository's settings turn on. Two ways to
+give cloud sessions the stack:
+
+- **The cloud environment's setup script.** It runs before Claude starts, so a plugin it installs is
+  loaded. For an environment whose sessions include agent-harness:
+
+  ```sh
+  if [ -f agent-harness/.claude-plugin/marketplace.json ] && command -v claude >/dev/null; then
+    claude plugin marketplace add ./agent-harness || claude plugin marketplace update ascentwright || true
+    claude plugin install pstack@ascentwright --scope user || true
+    claude plugin install ascentwright@ascentwright --scope user || true
+  fi
+  ```
+
+  It reads the marketplace from the session's checkout of agent-harness, so each plugin stays at the
+  `sha` pinned here.
+- **The organization's managed settings.** An owner of the Claude organization adds the same
+  `extraKnownMarketplaces` and `enabledPlugins` keys, with the marketplace source
+  `{ "source": "github", "repo": "Ascentwright-Capital/agent-harness", "ref": "<full commit id>" }`.
 
 Set `ref` to the full 40-character id of a reviewed commit on `main`, never a branch name. Without
 `ref`, every cloud session follows whatever is on `main` at that moment and skips the review each
@@ -65,6 +83,8 @@ A plugin can run hooks and scripts on every machine that installs it, so every c
 request here.
 
 - **Bump a pin.** Read the upstream diff between the old and the new commit, then change `sha`.
+- **Add our own skill.** Put it in `plugins/ascentwright/skills/<name>/SKILL.md` and add it to the
+  table above. It reaches a repository with the next `.agents/shared` bump.
 - **Add a plugin.** Add an entry with a full 40-character `sha`. Make it `"defaultEnabled": false`
   unless every repository needs it, and add it to the table above.
 - **Check it.** Run `claude plugin validate .`, then install the changed plugin from a local copy of
