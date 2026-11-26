@@ -20,6 +20,12 @@ The settings template turns these on in every repository.
 | `ascentwright` | This repository, [`plugins/ascentwright/`](plugins/ascentwright/) | `/ascentwright:be-ambitious`: make a task deeper, not bigger, and rewrite its prompt. |
 | `mattpocock-skills` | [mattpocock/skills](https://github.com/mattpocock/skills) | Issue to code: `/mattpocock-skills:grill-me`, `to-spec`, `to-tickets`, `tdd`, `diagnosing-bugs`, `code-review`. |
 | `emilkowalski-skills` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Interface work: `/emilkowalski-skills:emil-design-eng`, `animate`, `review-animations`, `break-ui`. |
+| `modern-web-guidance` | [GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance) | Any HTML, CSS or client-side JavaScript: looks up current web platform practice before code is written (required, see "Web code" in [standards.md](standards.md)). Also `/modern-web-guidance:chrome-extensions` for Manifest V3 extensions. |
+
+`modern-web-guidance` calls `npx -y modern-web-guidance@latest`, so it needs Node 22 and network
+access to the npm registry. The settings template allowlists that one command. The skill text is
+pinned like every plugin here; the guides come from the latest npm release, published by the Chrome
+team.
 
 `pstack` runs a hook at session start. It tells the agent to route larger tasks through
 `/pstack:poteto-mode`.
@@ -63,6 +69,7 @@ give cloud sessions the stack:
     claude plugin marketplace add ./agent-harness || claude plugin marketplace update ascentwright || true
     claude plugin install pstack@ascentwright --scope user || true
     claude plugin install ascentwright@ascentwright --scope user || true
+    claude plugin install modern-web-guidance@ascentwright --scope user || true
   fi
   ```
 

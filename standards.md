@@ -51,7 +51,7 @@ Breaking one is a bug, even if every check passes.
 ## Rules for AI agents
 
 - Read the repository's `AGENTS.md`, then `.agents/shared/`, before your first change. If it is empty, run `git submodule update --init`.
-- A skill from the [skill stack](skills.md) is advice. These standards and the repository's `AGENTS.md` win where they differ.
+- A skill from the [skill stack](skills.md) is advice, except Modern Web Guidance for web code (below). These standards and the repository's `AGENTS.md` win where they differ.
 - Stay inside the issue's scope. File other problems you find as new Linear issues.
 - Work test first where the repository has tests: show the test that failed before and passes after.
 - Run every check the repository's `AGENTS.md` lists before you open a pull request.
@@ -61,3 +61,27 @@ Breaking one is a bug, even if every check passes.
   infrastructure, or DNS.
 - When something cost you time, add it to the repository's pitfalls with its fix. When a rule can
   become a lint or a test, make it one and delete the prose.
+
+## Web code
+
+Before you write or change HTML, CSS or client-side JavaScript (pages, components, layout,
+animation, forms, accessibility, performance, or security in the browser), look up the current
+practice in Google Chrome's [Modern Web Guidance](https://developer.chrome.com/docs/modern-web-guidance)
+and build to it. Web platform features change faster than any model's training, so this is a rule,
+not advice. It does not apply to backend, infrastructure, scripts or tooling.
+
+1. Search with a short query for one capability, for example `"light dismiss dialog"` or
+   `"responsive data table"`. Split a task with several features into several searches:
+   `npx -y modern-web-guidance@latest search "<query>"`
+2. Retrieve the guides that match, plus the discipline guide that applies (`html`, `css`, `js`,
+   `forms`, `accessibility`, `performance`, `security`), comma separated:
+   `npx -y modern-web-guidance@latest retrieve "<id>,<id>"`
+3. Build to the guides, fallbacks included, and check your code against them before you open the
+   pull request.
+4. Under "How it was tested", list each guide ID you applied and what it changed, or the topics you
+   searched when none applied.
+
+The `modern-web-guidance` plugin in the [skill stack](skills.md) runs these steps for you; without it,
+run the commands. Browser support is Baseline Widely available, with each guide's fallbacks for
+anything newer, unless the repository's `AGENTS.md` sets another target. Run `legacy-scan` only when
+the issue asks to modernize a whole codebase.

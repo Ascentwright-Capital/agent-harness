@@ -11,7 +11,9 @@ do not start the next step before it holds. A repository can extend a step in it
    question changes what you build.
 3. **Branch.** Branch from an up-to-date `main` as `<type>/ap-<number>-<slug>`. Done when the
    repository's checks pass on the fresh branch.
-4. **Test first, then build.** Done when every "Done when" item has a passing test.
+4. **Test first, then build.** For web code, look up Modern Web Guidance before you write it
+   ("Web code" in [`../standards.md`](../standards.md)). Done when every "Done when" item has a
+   passing test.
 5. **Review your own diff twice.** First for duplication and dead code, then for wrong results,
    missing checks, money, time and auth. Done when the second pass finds nothing new.
 6. **Verify.** Run the change the way it ships, capture screenshots and a demo video, look at them,
